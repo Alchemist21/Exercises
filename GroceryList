@@ -1,0 +1,53 @@
+print("Welcome. This is Scrumdidily Management System otherwise known as SiMS")
+name = input("What is your name?")
+print("I think I'm going to like you " + name)
+print("Can I help you with the stocking? [Type Y/N only] ")
+answer = input()
+if answer == "Y":
+    print("Ok then let us proceed")
+elif answer == "N":
+    print("That is unfortunate. Bye then")
+    input("Press enter to exit")
+    raise SystemExit
+else:
+    print("That is not an option. Bye")
+    raise SystemExit
+print("These are the ingredients:")
+
+mylist = ["milk", "cocoa", "raisins", "nutmeg", "vanilla extract"]
+for num in mylist:
+    print(num)
+item1 = int(input("Please enter total bottles of milk requested: "))
+item2 = int(input("Please enter total grams of cocoa requested: "))
+item3 = int(input("Please enter total grams raisins requested: "))
+item4 = int(input("Please enter total grams of nutmeg requested: "))
+item5 = int(input("Please enter total bottles of vanilla extract requested: "))
+print("The following are the ingredients you requested:")
+mylist2 = [item1, item2, item3, item4, item5]
+final = []
+for i in range(max((len(mylist), len(mylist2)))):
+    while True:
+        try:
+            ing = (mylist[i], mylist2[i])
+        except IndexError:
+            if len(mylist) > len(mylist2):
+                mylist2.append("")
+                ing = (mylist[i], mylist2[i])
+            elif len(mylist) < len(mylist2):
+                mylist.append("")
+                ing = (mylist[i], mylist2[i])
+            continue
+        final.append(ing)
+        break
+print(final)
+
+print("Would you like exit this application? [Y/N]")
+answer = input()
+if answer == "Y":
+    print("Thank you for using SiMS")
+    input("Press enter to exit")
+    SystemExit
+if answer == "N":
+    print("Thank you for using SiMS")
+    input("Press enter to exit")
+    SystemExit
