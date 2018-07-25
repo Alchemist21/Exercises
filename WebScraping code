@@ -1,0 +1,7 @@
+import urllib3
+from bs4 import BeautifulSoup
+http = urllib3.PoolManager()
+r = http.request('GET', 'http://chainhaus.com')
+chainhaus_page = BeautifulSoup (r.data) 
+print(chainhaus_page.title)
+print(chainhaus_page.title.text)
