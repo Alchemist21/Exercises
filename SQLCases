@@ -1,0 +1,11 @@
+1. Show firstName and lastname of users who have purchased over 5 times between 1/1/2018 and 5/1/2018
+
+select firstName, lastName,
+from
+(
+
+from User a inner join Order b on a.UserID = b.UserID 
+where b.OrderTime between "01-01-2018" and "05-01-2018"
+)
+group by UserID having count(*)>=5;
+
