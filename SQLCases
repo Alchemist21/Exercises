@@ -9,3 +9,20 @@ where b.OrderTime between "01-01-2018" and "05-01-2018"
 )
 group by UserID having count(*)>=5;
 
+2. Show the most popular category(bought by the largest number of users)
+
+select category, count(distinct UserID) as count
+from Order a innerjoin OrderDetail on a.OrderID = b.OrderID
+groupby category
+order by count(distinct UserID) desc limit 1;
+
+3. Show the third most popular category
+
+select * from
+(
+select category, count(distinct UserID) as count
+from Order a innerjoin OrderDetail on a.OrderID = b.OrderID
+groupby category
+order by count(distinct UserID) desc limit 3
+)
+asc limit 1;
